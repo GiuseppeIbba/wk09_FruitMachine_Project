@@ -25,4 +25,18 @@ public class Game {
         return this.player.getCredit();
     }
 
+
+    public int spin() {
+
+        Fruit rF0 = wheels.get(0).getRandomFruit();
+        Fruit rF1 = wheels.get(1).getRandomFruit();
+        Fruit rF2 = wheels.get(2).getRandomFruit();
+
+        if (rF0 == rF1 && rF1 == rF2) {
+            return (rF0.getValue() * 3);
+        } else {
+            return 0;
+        }
+    }
+
 }
