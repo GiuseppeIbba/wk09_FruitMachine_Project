@@ -5,4 +5,20 @@ package example.codeclan.com.javafruitmachine;
  */
 
 public class Player {
+
+    private String name;
+    private int credit;
+
+    public Player(String name, int credit) {
+        this.name = name;
+        this.credit = credit;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getCredit() {
+        return this.credit;
+    }
 }
