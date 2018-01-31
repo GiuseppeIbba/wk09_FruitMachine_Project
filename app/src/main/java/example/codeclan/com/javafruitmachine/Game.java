@@ -24,4 +24,5 @@ public class Game {
     public int getPlayerCredit() {
         return this.player.getCredit();
     }
+
 }

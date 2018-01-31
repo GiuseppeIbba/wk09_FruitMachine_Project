@@ -71,6 +71,41 @@ public class GameTest {
         @Test
         public void canGetPositionOfAWheelInsideWheels() {
         assertEquals("Left", game.wheels.get(0).getPosition());
+        }
 
+    @Test
+    public void canWin() {
+        ArrayList<Fruit> fruitTest = new ArrayList<>();
+        Fruit apple = new Fruit("Apple", 10);
+        fruitTest.add(apple);
+        wheels = new ArrayList<>();
+        Wheel left = new Wheel("Left", fruitTest);
+        Wheel center = new Wheel("Center", fruitTest);
+        Wheel right = new Wheel("Right", fruitTest);
+        wheels.add(left);
+        wheels.add(center);
+        wheels.add(right);
+        game = new Game(player, wheels);
+        assertEquals(30, game.spin());
+    }
+
+
+    @Test
+    public void canLose() {
+        ArrayList<Fruit> fruitTest1 = new ArrayList<>();
+        ArrayList<Fruit> fruitTest2 = new ArrayList<>();
+        Fruit apple = new Fruit("Apple", 10);
+        Fruit banana = new Fruit("Banana", 20);
+        fruitTest1.add(apple);
+        fruitTest2.add(banana);
+        wheels = new ArrayList<>();
+        Wheel left = new Wheel("Left", fruitTest1);
+        Wheel center = new Wheel("Center", fruitTest1);
+        Wheel right = new Wheel("Right", fruitTest2);
+        wheels.add(left);
+        wheels.add(center);
+        wheels.add(right);
+        game = new Game(player, wheels);
+        assertEquals(0, game.spin());
     }
 }

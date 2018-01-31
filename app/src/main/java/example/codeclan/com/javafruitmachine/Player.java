@@ -21,4 +21,6 @@ public class Player {
     public int getCredit() {
         return this.credit;
     }
+
+
 }
