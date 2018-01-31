@@ -27,4 +27,7 @@ public class Wheel {
         return this.fruits.get(0);
     }
 
+    public int getCount() {
+        return this.fruits.size();
+    }
 }

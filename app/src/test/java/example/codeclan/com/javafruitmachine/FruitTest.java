@@ -3,6 +3,8 @@ package example.codeclan.com.javafruitmachine;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by user on 31/01/2018.
  */
@@ -26,4 +28,4 @@ public class FruitTest {
         assertEquals(10, fruit.getValue());
     }
 }
-}
+

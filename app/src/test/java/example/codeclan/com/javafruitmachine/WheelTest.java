@@ -57,11 +57,11 @@ public class WheelTest {
     }
 
     @Test
-    public void canGetFruitName() {
+    public void canGetFruitValue() {
         assertThat(wheel.getFruit(), instanceOf(Fruit.class));
         assertEquals(10, wheel.getFruit().getValue());
     }
-    
+
     @Test
     public void canCountItemInWheel() {
         assertEquals(10, wheel.getCount());
