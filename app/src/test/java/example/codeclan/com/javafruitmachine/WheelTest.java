@@ -1,5 +1,6 @@
 package example.codeclan.com.javafruitmachine;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -59,6 +60,11 @@ public class WheelTest {
     public void canGetFruitName() {
         assertThat(wheel.getFruit(), instanceOf(Fruit.class));
         assertEquals(10, wheel.getFruit().getValue());
+    }
+    
+    @Test
+    public void canCountItemInWheel() {
+        assertEquals(10, wheel.getCount());
     }
 
 
