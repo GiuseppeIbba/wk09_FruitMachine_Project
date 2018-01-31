@@ -10,7 +10,7 @@ public class Wheel {
 
     private String position;
     private ArrayList<Fruit> fruits;
-    private int currentFruitIndex;
+
 
 
     public Wheel(String position, ArrayList<Fruit> fruits) {
@@ -30,4 +30,6 @@ public class Wheel {
     public int getCount() {
         return this.fruits.size();
     }
+
+
 }

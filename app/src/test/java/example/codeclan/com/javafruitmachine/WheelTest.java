@@ -67,5 +67,16 @@ public class WheelTest {
         assertEquals(10, wheel.getCount());
     }
 
-
+    @Test
+    public void canGetRandomFruit() {
+        fruits = new ArrayList<>();
+        Fruit apple = new Fruit("Apple", 10);
+        Fruit banana = new Fruit("Banana", 20);
+        Fruit tomato = new Fruit("Tomato", 30);
+        fruits.add(apple);
+        fruits.add(banana);
+        fruits.add(tomato);
+        wheel = new Wheel("Left", fruits);
+        assert wheel.getRandomFruit().equals(tomato) || wheel.getRandomFruit().equals(banana) || wheel.getRandomFruit().equals(apple);
+    }
 }
