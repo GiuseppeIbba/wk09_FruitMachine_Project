@@ -92,6 +92,7 @@ public class GameTest {
 
     @Test
     public void canLose() {
+        Player player = new Player("Giuseppe", 50);
         ArrayList<Fruit> fruitTest1 = new ArrayList<>();
         ArrayList<Fruit> fruitTest2 = new ArrayList<>();
         Fruit apple = new Fruit("Apple", 10);
@@ -107,5 +108,24 @@ public class GameTest {
         wheels.add(right);
         game = new Game(player, wheels);
         assertEquals(0, game.spin());
+    }
+
+    @Test
+    public void playerCanStartGame() {
+        Player player = new Player("Giuseppe", 50);
+        ArrayList<Fruit> fruitTest = new ArrayList<>();
+        Fruit apple = new Fruit("Apple", 10);
+        fruitTest.add(apple);
+        wheels = new ArrayList<>();
+        Wheel left = new Wheel("Left", fruitTest);
+        Wheel center = new Wheel("Center", fruitTest);
+        Wheel right = new Wheel("Right", fruitTest);
+        wheels.add(left);
+        wheels.add(center);
+        wheels.add(right);
+        game = new Game(player, wheels);
+        assertEquals(49, player.getCredit());
+        assertEquals(30, game.spin());
+        assertEquals(79, player.getCredit());
     }
 }
