@@ -1,6 +1,7 @@
 package example.codeclan.com.javafruitmachine;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by user on 31/01/2018.
@@ -31,5 +32,8 @@ public class Wheel {
         return this.fruits.size();
     }
 
-
+    public Fruit getRandomFruit() {
+        Collections.shuffle(fruits);
+        return this.fruits.get(0);
+    }
 }
