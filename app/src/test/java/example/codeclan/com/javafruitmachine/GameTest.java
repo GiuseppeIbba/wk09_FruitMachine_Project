@@ -63,5 +63,14 @@ public class GameTest {
         assertEquals(50, game.getPlayerCredit());
         }
 
-        
+        @Test
+        public void canCountWheels() {
+        assertEquals(3, game.wheels.size());
+        }
+
+        @Test
+        public void canGetPositionOfAWheelInsideWheels() {
+        assertEquals("Left", game.wheels.get(0).getPosition());
+
+    }
 }

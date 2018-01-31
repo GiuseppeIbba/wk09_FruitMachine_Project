@@ -17,4 +17,11 @@ public class Game {
         this.wheels = wheels;
     }
 
+    public String getPlayerName() {
+        return this.player.getName();
+    }
+
+    public int getPlayerCredit() {
+        return this.player.getCredit();
+    }
 }
