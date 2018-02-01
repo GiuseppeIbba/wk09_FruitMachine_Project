@@ -172,4 +172,28 @@ public class GameTest {
         assertEquals("", game.play());
         assertEquals(49, player.getCredit());
     }
+
+    @Test
+    public void canConsumeCredits() {
+        player = new Player("Giuseppe", 5);
+        ArrayList<Fruit> fruitTest1 = new ArrayList<>();
+        ArrayList<Fruit> fruitTest2 = new ArrayList<>();
+        Fruit apple = new Fruit("Apple", 10);
+        Fruit banana = new Fruit("Banana", 20);
+        fruitTest1.add(apple);
+        fruitTest2.add(banana);
+        wheels = new ArrayList<>();
+        Wheel left = new Wheel("Left", fruitTest1);
+        Wheel center = new Wheel("Center", fruitTest1);
+        Wheel right = new Wheel("Right", fruitTest2);
+        wheels.add(left);
+        wheels.add(center);
+        wheels.add(right);
+        game = new Game(player, wheels);
+        game.play();
+        game.play();
+        game.play();
+        game.play();
+        assertEquals(1, player.getCredit());
+    }
 }
