@@ -39,6 +39,28 @@ public class Game {
         }
     }
 
+    public String play() {
+        if (this.player.getCredit() > 0) {
+            this.player.changeCredit(-1);
+        } else {
+            return "GAME OVER";
+        }
+        int winnings = spin();//stock spin() in a variable
+        if (winnings > 0) {
+            winner(winnings);
+            return "You win " + winnings + " credits";
+        } else {
+            return "";
+        }
+
+    }
 
 
+    public void winner(int calculateWinning) {
+        this.player.changeCredit(calculateWinning);
+    }
 }
+
+
+
+

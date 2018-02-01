@@ -22,5 +22,8 @@ public class Player {
         return this.credit;
     }
 
+    public void changeCredit(int winning) {
+        this.credit += winning;
+    }
 
 }

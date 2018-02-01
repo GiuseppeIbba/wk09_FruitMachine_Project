@@ -27,4 +27,5 @@ public class PlayerTest {
     public void canGetCredit() {
         assertEquals(50, player.getCredit());
     }
+
 }

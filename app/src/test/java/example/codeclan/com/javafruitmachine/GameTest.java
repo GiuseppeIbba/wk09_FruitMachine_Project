@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by user on 31/01/2018.
@@ -52,29 +53,30 @@ public class GameTest {
         game = new Game(player, wheels);
     }
 
-        @Test
-        public void canGetPlayerName() {
+    @Test
+    public void canGetPlayerName() {
         assertEquals("Giuseppe", game.getPlayerName());
-        }
+    }
 
 
-        @Test
-        public void canGetPlayerCredit() {
+    @Test
+    public void canGetPlayerCredit() {
         assertEquals(50, game.getPlayerCredit());
-        }
+    }
 
-        @Test
-        public void canCountWheels() {
+    @Test
+    public void canCountWheels() {
         assertEquals(3, game.wheels.size());
-        }
+    }
 
-        @Test
-        public void canGetPositionOfAWheelInsideWheels() {
+    @Test
+    public void canGetPositionOfAWheelInsideWheels() {
         assertEquals("Left", game.wheels.get(0).getPosition());
-        }
+    }
 
     @Test
     public void canWin() {
+        Player player = new Player("Giuseppe", 50);
         ArrayList<Fruit> fruitTest = new ArrayList<>();
         Fruit apple = new Fruit("Apple", 10);
         fruitTest.add(apple);
@@ -124,8 +126,27 @@ public class GameTest {
         wheels.add(center);
         wheels.add(right);
         game = new Game(player, wheels);
-        assertEquals(49, player.getCredit());
-        assertEquals(30, game.spin());
-        assertEquals(79, player.getCredit());
+        assertEquals(50, game.getPlayerCredit());
+        assertEquals("You win 30 credits", game.play());
+        assertEquals(79, game.getPlayerCredit());
+    }
+
+    @Test
+    public void playerCannotStartGame() {
+        Player player = new Player("Giuseppe", 0);
+        ArrayList<Fruit> fruitTest = new ArrayList<>();
+        Fruit apple = new Fruit("Apple", 10);
+        fruitTest.add(apple);
+        wheels = new ArrayList<>();
+        Wheel left = new Wheel("Left", fruitTest);
+        Wheel center = new Wheel("Center", fruitTest);
+        Wheel right = new Wheel("Right", fruitTest);
+        wheels.add(left);
+        wheels.add(center);
+        wheels.add(right);
+        game = new Game(player, wheels);
+        assertEquals(0, game.getPlayerCredit());
+        assertEquals("GAME OVER", game.play());
+        assertEquals(0, game.getPlayerCredit());
     }
 }
