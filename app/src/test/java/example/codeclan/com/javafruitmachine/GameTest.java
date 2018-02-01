@@ -75,7 +75,7 @@ public class GameTest {
     }
 
     @Test
-    public void canWin() {
+    public void canWinSpin() {
         Player player = new Player("Giuseppe", 50);
         ArrayList<Fruit> fruitTest = new ArrayList<>();
         Fruit apple = new Fruit("Apple", 10);
@@ -93,7 +93,7 @@ public class GameTest {
 
 
     @Test
-    public void canLose() {
+    public void canLoseSpin() {
         Player player = new Player("Giuseppe", 50);
         ArrayList<Fruit> fruitTest1 = new ArrayList<>();
         ArrayList<Fruit> fruitTest2 = new ArrayList<>();
@@ -148,5 +148,28 @@ public class GameTest {
         assertEquals(0, game.getPlayerCredit());
         assertEquals("GAME OVER", game.play());
         assertEquals(0, game.getPlayerCredit());
+    }
+
+
+
+    @Test
+    public void canLosePlay() {
+        Player player = new Player("Giuseppe", 50);
+        ArrayList<Fruit> fruitTest1 = new ArrayList<>();
+        ArrayList<Fruit> fruitTest2 = new ArrayList<>();
+        Fruit apple = new Fruit("Apple", 10);
+        Fruit banana = new Fruit("Banana", 20);
+        fruitTest1.add(apple);
+        fruitTest2.add(banana);
+        wheels = new ArrayList<>();
+        Wheel left = new Wheel("Left", fruitTest1);
+        Wheel center = new Wheel("Center", fruitTest1);
+        Wheel right = new Wheel("Right", fruitTest2);
+        wheels.add(left);
+        wheels.add(center);
+        wheels.add(right);
+        game = new Game(player, wheels);
+        assertEquals("", game.play());
+        assertEquals(49, player.getCredit());
     }
 }
