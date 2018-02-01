@@ -45,19 +45,19 @@ public class Game {
         Fruit rF2Next = wheels.get(2).getNextFruit(s2, rF2Index);
 
 
-//        if ((rF0 == rF1 && rF0 != rF2) || (rF0 == rF2 && rF1 != rF2) || (rF1 == rF2 && rF1 != rF0)) {
-//
-//            if (rF0 == rF1 && canDoNudge(rF2Next, rF2Prev, rF1)) { //if first and second wheel fruits are equal
-//                rF2 = nudge(rF2Next, rF2Prev, rF1);
-//            } else if (rF0 == rF2 && canDoNudge(rF1Next, rF1Prev, rF0)) { //if first and third wheel fruits are equal
-//                rF1 = nudge(rF1Next, rF1Prev, rF0);
-//            } else if (rF1 == rF2 && canDoNudge(rF0Next, rF0Prev, rF2)) { //if second and third wheel fruits are equal
-//                rF0 = nudge(rF0Next, rF0Prev, rF2);
-//            }
-//        }
-        return calculateWinning(rF0, rF1, rF2);
+        if ((rF0 == rF1 && rF0 != rF2) || (rF0 == rF2 && rF1 != rF2) || (rF1 == rF2 && rF1 != rF0)) {
 
+            if (rF0 == rF1 && rF2Next == rF1) { //if first and second wheel fruits are equal
+                rF2 = rF2Next;
+            } else if (rF0 == rF2 && rF1Next == rF0) { //if first and third wheel fruits are equal
+                rF1 = rF1Next;
+            } else if (rF1 == rF2 && rF0Next == rF2) { //if second and third wheel fruits are equal
+                rF0 = rF0Next;
+            }
+        }
+        return calculateWinning(rF0, rF1, rF2);
     }
+
 
     public int calculateWinning(Fruit rF0, Fruit rF1, Fruit rF2) {
         if (rF0 == rF1 && rF1 == rF2) {
@@ -67,20 +67,7 @@ public class Game {
         }
     }
 
-    //////////////////////
-        ////////////////////////////
-//        Fruit rF0 = wheels.get(0).getRandomFruit();
-//        Fruit rF1 = wheels.get(1).getRandomFruit();
-//        Fruit rF2 = wheels.get(2).getRandomFruit();
-//
-//        if (rF0 == rF1 && rF1 == rF2) {
-//            return (rF0.getValue() * 3);
-//        } else {
-//            return 0;
-//        }
-//    }
-//////////////////////////////////
-    /////////////////////////////////////
+
     public String play() {
         if (this.player.getCredit() > 0) {
             this.player.changeCredit(-1);
@@ -101,6 +88,8 @@ public class Game {
     public void winner(int calculateWinning) {
         this.player.changeCredit(calculateWinning);
     }
+
+
 }
 
 
