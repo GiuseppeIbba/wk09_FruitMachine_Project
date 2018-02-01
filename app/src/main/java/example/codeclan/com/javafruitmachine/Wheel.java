@@ -36,4 +36,9 @@ public class Wheel {
         Collections.shuffle(fruits);
         return this.fruits.get(0);
     }
+
+    public int getFruitIndex(Fruit fruit) {
+        return fruits.lastIndexOf(fruit);
+    }
+
 }
