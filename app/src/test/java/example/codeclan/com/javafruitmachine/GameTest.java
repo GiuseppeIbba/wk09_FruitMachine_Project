@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -195,5 +196,28 @@ public class GameTest {
         game.play();
         game.play();
         assertEquals(1, player.getCredit());
+    }
+
+    @Test
+    public void canNudge() {
+        ArrayList<Fruit> fruitTest1 = new ArrayList<>();
+        ArrayList<Fruit> fruitTest2 = new ArrayList<>();
+        Fruit apple = new Fruit("Apple", 10);
+        Fruit banana = new Fruit("Banana", 20);
+        Fruit tomato = new Fruit("Tomato", 30);
+        fruitTest1.add(apple);
+        fruitTest2.add(apple);
+        fruitTest2.add(banana);
+        fruitTest2.add(tomato);
+        wheels = new ArrayList<>();
+        Wheel left = new Wheel("Left", fruitTest1);
+        Wheel center = new Wheel("Center", fruitTest1);
+        Wheel right = new Wheel("Right", fruitTest2);
+        wheels.add(left);
+        wheels.add(center);
+        wheels.add(right);
+        game = new Game(player, wheels);
+        assertNotEquals(apple, wheels.get(2).getRandomFruit());
+        assert wheels.get(2).getRandomFruit() == tomato || wheels.get(2).getRandomFruit() == banana;
     }
 }
