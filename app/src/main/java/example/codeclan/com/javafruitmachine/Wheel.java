@@ -41,13 +41,12 @@ public class Wheel {
         return fruits.lastIndexOf(fruit);
     }
 
-    public Fruit getNextFruit(int size, int randomId) {
-        if (randomId == size - 1) {
-            int nudgeId = 0;
-            return this.fruits.get(nudgeId);
-        } else {
-            return this.fruits.get(randomId + 1);
-        }
-    }
+//    public Fruit getNextFruit(int size, int randomId) {
+//        if (randomId == size - 1) {
+//            int nudgeId = 0;
+//            return this.fruits.get(nudgeId);
+//        } else {
+//            return this.fruits.get(randomId + 1);
+//        }
 
 }

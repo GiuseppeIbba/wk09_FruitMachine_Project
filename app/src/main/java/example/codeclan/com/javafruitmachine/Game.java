@@ -10,11 +10,14 @@ public class Game {
 
     private Player player;
     ArrayList<Wheel> wheels;
+    private boolean hold = false;
+    private int spinCounter = 0;
 
 
     public Game(Player player, ArrayList<Wheel> wheels) {
         this.player = player;
         this.wheels = wheels;
+
     }
 
     public String getPlayerName() {
@@ -26,37 +29,80 @@ public class Game {
     }
 
 
+
     public int spin() {
+
+
 
         Fruit rF0 = wheels.get(0).getRandomFruit();
         Fruit rF1 = wheels.get(1).getRandomFruit();
         Fruit rF2 = wheels.get(2).getRandomFruit();
 
-        int s0 = wheels.get(0).getCount();
-        int s1 = wheels.get(1).getCount();
-        int s2 = wheels.get(2).getCount();
-
-        int rF0Index = wheels.get(0).getFruitIndex(rF0);
-        int rF1Index = wheels.get(1).getFruitIndex(rF1);
-        int rF2Index = wheels.get(2).getFruitIndex(rF2);
-
-        Fruit rF0Next = wheels.get(0).getNextFruit(s0, rF0Index);
-        Fruit rF1Next = wheels.get(1).getNextFruit(s1, rF1Index);
-        Fruit rF2Next = wheels.get(2).getNextFruit(s2, rF2Index);
+        spinCounter = 1;
 
 
-        if ((rF0 == rF1 && rF0 != rF2) || (rF0 == rF2 && rF1 != rF2) || (rF1 == rF2 && rF1 != rF0)) {
+        if ((spinCounter == 1) && (hold == true)) {
+            if (rF0 == wheels.get(0).getFruit()) {
+                rF1 = wheels.get(1).getRandomFruit();
+                rF2 = wheels.get(2).getRandomFruit();
+            } else if (rF1 == wheels.get(1).getFruit()) {
+                rF0 = wheels.get(0).getRandomFruit();
+                rF2 = wheels.get(2).getRandomFruit();
+            } else if (rF2 == wheels.get(2).getFruit()) {
+                rF0 = wheels.get(0).getRandomFruit();
+                rF1 = wheels.get(1).getRandomFruit();
+            } else if (rF0 == wheels.get(0).getFruit() && rF1 == wheels.get(1).getFruit()) {
+                rF2 = wheels.get(2).getRandomFruit();
+            } else if (rF0 == wheels.get(0).getFruit() && rF2 == wheels.get(2).getFruit()) {
+                rF1 = wheels.get(1).getRandomFruit();
+            } else if (rF1 == wheels.get(1).getFruit() && rF2 == wheels.get(2).getFruit()) {
+                rF0 = wheels.get(0).getRandomFruit();
+            } else {
+                return spin();
 
-            if (rF0 == rF1 && rF2Next == rF1) { //if first and second wheel fruits are equal
-                rF2 = rF2Next;
-            } else if (rF0 == rF2 && rF1Next == rF0) { //if first and third wheel fruits are equal
-                rF1 = rF1Next;
-            } else if (rF1 == rF2 && rF0Next == rF2) { //if second and third wheel fruits are equal
-                rF0 = rF0Next;
             }
         }
+
+        spinCounter = 0;
+
         return calculateWinning(rF0, rF1, rF2);
     }
+
+
+
+//        Fruit rF0 = wheels.get(0).getRandomFruit();
+//        Fruit rF1 = wheels.get(1).getRandomFruit();
+//        Fruit rF2 = wheels.get(2).getRandomFruit();
+
+
+//        int s0 = wheels.get(0).getCount();
+//        int s1 = wheels.get(1).getCount();
+//        int s2 = wheels.get(2).getCount();
+
+//        int rF0Index = wheels.get(0).getFruitIndex(rF0);
+//        int rF1Index = wheels.get(1).getFruitIndex(rF1);
+//        int rF2Index = wheels.get(2).getFruitIndex(rF2);
+//
+//        Fruit rF0Next = wheels.get(0).getNextFruit(s0, rF0Index);
+//        Fruit rF1Next = wheels.get(1).getNextFruit(s1, rF1Index);
+//        Fruit rF2Next = wheels.get(2).getNextFruit(s2, rF2Index);
+
+//
+//        if ((rF0 == rF1 && rF0 != rF2) || (rF0 == rF2 && rF1 != rF2) || (rF1 == rF2 && rF1 != rF0)) {
+//
+//            if (rF0 == rF1 && rF2Next == rF1) { //if first and second wheel fruits are equal
+//                rF2 = rF2Next;
+//            } else if (rF0 == rF2 && rF1Next == rF0) { //if first and third wheel fruits are equal
+//                rF1 = rF1Next;
+//            } else if (rF1 == rF2 && rF0Next == rF2) { //if second and third wheel fruits are equal
+//                rF0 = rF0Next;
+//            }
+//        }
+
+
+//                return calculateWinning(rF0, rF1, rF2);
+//            }
+//        }
 
 
     public int calculateWinning(Fruit rF0, Fruit rF1, Fruit rF2) {
