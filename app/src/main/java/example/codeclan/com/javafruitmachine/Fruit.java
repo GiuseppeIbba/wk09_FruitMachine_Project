@@ -22,5 +22,4 @@ class Fruit {
             return this.value;
         }
 
-
 }
